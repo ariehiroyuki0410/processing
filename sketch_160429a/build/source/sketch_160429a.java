@@ -3,6 +3,8 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import peasy.*; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -14,100 +16,29 @@ import java.io.IOException;
 
 public class sketch_160429a extends PApplet {
 
-int NUM = 32;
-float[] x = new float[NUM];
-float[] y = new float[NUM];
-float phase, speed, radius;
 
-public void setup(){
+
+PeasyCam cam;
+
+public void setup() {
   
-  frameRate(60);
-  background(0);
-  speed = 4.0f;
-  radius = height/4.0f;
+  cam = new PeasyCam(this, 100);
+  cam.setMinimumDistance(50);
+  cam.setMaximumDistance(500);
 }
-
 public void draw() {
-  fade();
-  translate(width/2, height/2);
-
-  phase += speed;
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 2)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 5)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 8)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 4)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 9)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 1)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 2)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 8)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 12)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-
+  rotateX(-.5f);
+  rotateY(-.5f);
+  background(0);
+  fill(255,0,0);
+  box(30);
+  pushMatrix();
+  translate(0,0,20);
+  fill(0,0,255);
+  box(5);
+  popMatrix();
 }
-
-
-
-public void fade(){
-  noStroke();
-  fill(0, 10);
-  rect(0, 0, width, height);
-}
-  public void settings() {  size(600, 600); }
+  public void settings() {  size(200,200,P3D); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "sketch_160429a" };
     if (passedArgs != null) {

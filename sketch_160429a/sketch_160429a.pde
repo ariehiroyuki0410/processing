@@ -1,93 +1,22 @@
-int NUM = 32;
-float[] x = new float[NUM];
-float[] y = new float[NUM];
-float phase, speed, radius;
+import peasy.*;
 
-void setup(){
-  size(600, 600);
-  frameRate(60);
-  background(0);
-  speed = 4.0;
-  radius = height/4.0;
+PeasyCam cam;
+
+void setup() {
+  size(200,200,P3D);
+  cam = new PeasyCam(this, 100);
+  cam.setMinimumDistance(50);
+  cam.setMaximumDistance(500);
 }
-
 void draw() {
-  fade();
-  translate(width/2, height/2);
-
-  phase += speed;
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 2)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 5)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 8)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 4)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 9)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 1)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 2)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 8)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 4)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-  for (int i = 0; i < NUM; i++) {
-    x[i] = cos(radians(phase) / NUM * (i + 12)) * radius;
-    y[i] = sin(radians(phase) / NUM * (i + 1)) * radius;
-
-    fill(0, 127, 255);
-    ellipse(x[i],y[i],5,5);
-  }
-
-
-}
-
-
-
-void fade(){
-  noStroke();
-  fill(0, 10);
-  rect(0, 0, width, height);
+  rotateX(-.5);
+  rotateY(-.5);
+  background(0);
+  fill(255,0,0);
+  box(30);
+  pushMatrix();
+  translate(0,0,20);
+  fill(0,0,255);
+  box(5);
+  popMatrix();
 }
